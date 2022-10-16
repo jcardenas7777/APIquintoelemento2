@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -12,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import UNAB.APIquintoE.Models.peticiones.HistorialActualizarRequestModel;
 import UNAB.APIquintoE.Models.peticiones.HistorialCrearRequestModel;
 import UNAB.APIquintoE.Models.respuestas.HistorialDataRestModel;
 import UNAB.APIquintoE.Services.IHistorialServices;
+import UNAB.APIquintoE.Services.IUsuarioServices;
 import UNAB.APIquintoE.Shared.HistorialDto;
+import UNAB.APIquintoE.Shared.UsuarioDto;
 
 @RestController
 @RequestMapping("/historial")
@@ -28,74 +33,117 @@ public class HistorialController {
   @Autowired
   IHistorialServices iHistorialServices;
  
+  @Autowired
+  IUsuarioServices iUsuarioServices;
+
   @GetMapping
   public HistorialDataRestModel leerHistorial(){
+
+    
+
     String documento="1214714596";
     HistorialDto historialDto=iHistorialServices.leerHistorial(documento);
 
     HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto,HistorialDataRestModel.class);
-  return historialDataRestModel;
+    return historialDataRestModel;
 
   }
    @GetMapping(path = "/mihistorial")
    public List<HistorialDataRestModel>verHistorial(){
 
-   String documento="1214714596";
-
-   List<HistorialDto>historialDtoList= iHistorialServices.verHistorial(documento);
-
-   List<HistorialDataRestModel> historialDataRestModelList=new ArrayList<>();
-
-   for (HistorialDto historialDto : historialDtoList) {
-    HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto,HistorialDataRestModel.class);
-    historialDataRestModelList.add(historialDataRestModel);
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String username = authentication.getPrincipal().toString();
     
-   }
+    UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
 
-    return historialDataRestModelList;
+    if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
+        String documento="121447";
+
+        List<HistorialDto>historialDtoList= iHistorialServices.verHistorial(documento);
+
+        List<HistorialDataRestModel> historialDataRestModelList=new ArrayList<>();
+
+        for (HistorialDto historialDto : historialDtoList) {
+          HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto,HistorialDataRestModel.class);
+          historialDataRestModelList.add(historialDataRestModel);
+          
+        }
+
+          return historialDataRestModelList;
+    }   
+    return null;
     
    }
 
   @PostMapping 
   public HistorialDataRestModel crearHistorial(@RequestBody HistorialCrearRequestModel historialCrearRequestModel){
-   
-    HistorialDto historialcrearDto=modelMapper.map(historialCrearRequestModel, HistorialDto.class);
-
-    HistorialDto historialDto= iHistorialServices.crearHistorial(historialcrearDto);
     
-    HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto, HistorialDataRestModel.class);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getPrincipal().toString();
+        
+        UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
 
-    return historialDataRestModel;
+        if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
+
+            HistorialDto historialcrearDto=modelMapper.map(historialCrearRequestModel, HistorialDto.class);
+
+            HistorialDto historialDto= iHistorialServices.crearHistorial(historialcrearDto);
+            
+            HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto, HistorialDataRestModel.class);
+
+            return historialDataRestModel;
+
+        }
+
+        return null;
   }
 
   @GetMapping(path = "/historialcreado")
   public List<HistorialDataRestModel> historialesCreados(){
+  
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String username = authentication.getPrincipal().toString();
+        
+      UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
 
-  List<HistorialDto>historialDtoList= iHistorialServices.historialesCreados();
+      if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-  List<HistorialDataRestModel> historialDataRestModelList=new ArrayList<>();
+          List<HistorialDto>historialDtoList= iHistorialServices.historialesCreados();
 
-  for (HistorialDto historialDto: historialDtoList) {
-    HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto, HistorialDataRestModel.class);
-    historialDataRestModelList.add(historialDataRestModel);
-  }
-  return historialDataRestModelList;
+          List<HistorialDataRestModel> historialDataRestModelList=new ArrayList<>();
 
+          for (HistorialDto historialDto: historialDtoList) {
+            HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto, HistorialDataRestModel.class);
+            historialDataRestModelList.add(historialDataRestModel);
+          }
+          return historialDataRestModelList;
+      }
+
+        return null;
   } 
   
   @PutMapping(path = "/actualizarhistorial")
   public HistorialDataRestModel actualizarhistorial(@RequestBody HistorialActualizarRequestModel historialActualizarRequestModel,String documento){
 
-   documento="1214714598";
-  HistorialDto historialDtoActualizar=modelMapper.map(historialActualizarRequestModel, HistorialDto.class);
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String username = authentication.getPrincipal().toString();
+        
+      UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
 
-  historialDtoActualizar.setDocumento(documento);
-   HistorialDto historialDto= iHistorialServices.actualizarHistorial(historialDtoActualizar, documento);
+      if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-  HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto, HistorialDataRestModel.class);
+          documento="1214714598";
+          HistorialDto historialDtoActualizar=modelMapper.map(historialActualizarRequestModel, HistorialDto.class);
 
-    return historialDataRestModel;
+          historialDtoActualizar.setDocumento(documento);
+          HistorialDto historialDto= iHistorialServices.actualizarHistorial(historialDtoActualizar, documento);
+
+          HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto, HistorialDataRestModel.class);
+
+            return historialDataRestModel;
+      }  
+        return null;     
    }
  
 
