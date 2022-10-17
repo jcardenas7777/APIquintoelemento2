@@ -26,7 +26,7 @@ public class ConfiguracionSecurity extends WebSecurityConfigurerAdapter{
   
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // TODO Auto-generated method stub
+        
         http
         //cors para permitir el intercambio de datos con servidores
         .cors()
