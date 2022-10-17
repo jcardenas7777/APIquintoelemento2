@@ -58,7 +58,7 @@ public class HistorialController {
 
     if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-        String documento="121447";
+        String documento="1214474";
 
         List<HistorialDto>historialDtoList= iHistorialServices.verHistorial(documento);
 
@@ -133,7 +133,7 @@ public class HistorialController {
 
       if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-          documento="1214714598";
+          documento="1214474";
           HistorialDto historialDtoActualizar=modelMapper.map(historialActualizarRequestModel, HistorialDto.class);
 
           historialDtoActualizar.setDocumento(documento);

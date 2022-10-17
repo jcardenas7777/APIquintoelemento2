@@ -7,5 +7,5 @@ public class ConstantesSecurity {
     public static final String TOKEN_PREFIJO="Bearer ";//palabra estandar para saber donde esta el token
     //token generado con io.jsonwebtoken.security.Keys
     public static final String TOKEN_SECRETO="PlPywmQnZNttmYssVIMI7xOcpq795YOZxvk/An/zJ9FrbM8uAo3KgWhM7y8K0dLP7Ikvy57AoalH5cWqD++3xA==";
-    public static final long FECHA_EXPIRACION= 57600;//tiempo en ms para la expiracion del token 16 horas
+    public static final long FECHA_EXPIRACION= 57600000;//tiempo en ms para la expiracion del token 16 horas
 }
