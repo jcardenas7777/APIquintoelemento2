@@ -4,24 +4,65 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 
+import UNAB.APIquintoE.Data.entidades.PacienteEntity;
+
 public class CitaDto implements Serializable{
 private static final long serialVersionUID=1L; 
 
-    private Date FechaDeCita; 
+    private long id; 
+    private String idCita;  
+    private Date fechaDeCita; 
+    private String nombre; 
+    private String apellido; 
     private String numeroDeConsultorio; 
     private Time hora; 
     private String numeroDeDocumento; 
     private boolean estado;  
     private String tipoDeCita; 
     private String notas;
+    private PacienteEntity pacienteEntity; 
 
 
-    public Date getFechaDeCita() {
-        return this.FechaDeCita;
+// GETTERS AND SETTERS. 
+
+    public long getId() {
+        return this.id;
     }
 
-    public void setFechaDeCita(Date FechaDeCita) {
-        this.FechaDeCita = FechaDeCita;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getIdCita() {
+        return this.idCita;
+    }
+
+    public void setIdCita(String idCita) {
+        this.idCita = idCita;
+    }
+
+    public Date getFechaDeCita() {
+        return this.fechaDeCita;
+    }
+
+    public void setFechaDeCita(Date fechaDeCita) {
+        this.fechaDeCita = fechaDeCita;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return this.apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getNumeroDeConsultorio() {
@@ -75,5 +116,15 @@ private static final long serialVersionUID=1L;
     public void setNotas(String notas) {
         this.notas = notas;
     }
-    
+
+    public PacienteEntity getPacienteEntity() {
+        return this.pacienteEntity;
+    }
+
+    public void setPacienteEntity(PacienteEntity pacienteEntity) {
+        this.pacienteEntity = pacienteEntity;
+    }
+ 
+
+
 }

@@ -3,22 +3,36 @@ package UNAB.APIquintoE.Models.respuestas;
 import java.sql.Date;
 import java.sql.Time;
 
-public class CitasDataRestModel {
-    private Date FechaDeCita; 
-    private String numeroDeConsultorio; 
-    private Time hora; 
-    private String numeroDeDocumento; 
-    private boolean estado;  
-    private String tipoDeCita; 
-    private String notas; 
+import UNAB.APIquintoE.Data.entidades.PacienteEntity;
 
+public class CitasDataRestModel {
+
+    private String idCita;
+    private Date fechaDeCita;
+    private String numeroDeConsultorio;
+    private Time hora;
+    private String numeroDeDocumento;
+    private boolean estado;
+    private String tipoDeCita;
+    private String notas;
+    private PacienteEntity pacienteEntity;
+
+
+
+    public String getIdCita() {
+        return this.idCita;
+    }
+
+    public void setIdCita(String idCita) {
+        this.idCita = idCita;
+    }
 
     public Date getFechaDeCita() {
-        return this.FechaDeCita;
+        return this.fechaDeCita;
     }
 
     public void setFechaDeCita(Date FechaDeCita) {
-        this.FechaDeCita = FechaDeCita;
+        this.fechaDeCita = FechaDeCita;
     }
 
     public String getNumeroDeConsultorio() {
@@ -49,10 +63,6 @@ public class CitasDataRestModel {
         return this.estado;
     }
 
-    public boolean getEstado() {
-        return this.estado;
-    }
-
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
@@ -73,5 +83,12 @@ public class CitasDataRestModel {
         this.notas = notas;
     }
 
+    public PacienteEntity getPacienteEntity() {
+        return this.pacienteEntity;
+    }
+
+    public void setPacienteEntity(PacienteEntity pacienteEntity) {
+        this.pacienteEntity = pacienteEntity;
+    }
 
 }

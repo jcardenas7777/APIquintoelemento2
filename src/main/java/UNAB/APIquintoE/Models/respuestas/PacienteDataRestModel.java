@@ -4,25 +4,18 @@ import java.sql.Date;
 
 public class PacienteDataRestModel {
 
-    private long id;
+    
     private String nombre; 
     private String apellido; 
     private String sexo; 
     private Date fechaDeNacimiento; 
     private String edad; 
     private String numeroDeDocumento; 
-    private String tipo; 
+    private String tipoDeDocumento; 
     private String telefonoDeContacto; 
     private String ciudad;
+    private String idPaciente;
 
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return this.nombre;
@@ -72,12 +65,12 @@ public class PacienteDataRestModel {
         this.numeroDeDocumento = numeroDeDocumento;
     }
 
-    public String getTipo() {
-        return this.tipo;
+    public String getTipoDeDocumento() {
+        return this.tipoDeDocumento;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoDeDocumento(String tipoDeDocumento) {
+        this.tipoDeDocumento = tipoDeDocumento;
     }
 
     public String getTelefonoDeContacto() {
@@ -96,5 +89,11 @@ public class PacienteDataRestModel {
         this.ciudad = ciudad;
     }
 
+    public String getIdPaciente() {
+        return this.idPaciente;
+    }
 
+    public void setIdPaciente(String idPaciente) {
+        this.idPaciente = idPaciente;
+    }
 }

@@ -3,20 +3,23 @@ package UNAB.APIquintoE.Shared;
 import java.io.Serializable;
 import java.sql.Date;
 
+
 public class PacienteDto implements Serializable {
 private static final long serialVersionUID=1L; 
 
     private long id; 
+    private String idPaciente; 
     private String nombre; 
     private String apellido; 
     private String sexo; 
     private Date fechaDeNacimiento; 
     private String edad; 
     private String numeroDeDocumento; 
-    private String tipo; 
     private String telefonoDeContacto; 
     private String ciudad; 
+    private String correo; 
     private String tipoDeDocumento;
+    
 
 
     public long getId() {
@@ -25,6 +28,14 @@ private static final long serialVersionUID=1L;
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getIdPaciente() {
+        return this.idPaciente;
+    }
+
+    public void setIdPaciente(String idPaciente) {
+        this.idPaciente = idPaciente;
     }
 
     public String getNombre() {
@@ -75,14 +86,6 @@ private static final long serialVersionUID=1L;
         this.numeroDeDocumento = numeroDeDocumento;
     }
 
-    public String getTipo() {
-        return this.tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public String getTelefonoDeContacto() {
         return this.telefonoDeContacto;
     }
@@ -97,6 +100,14 @@ private static final long serialVersionUID=1L;
 
     public void setCiudad(String ciudad) {
         this.ciudad = ciudad;
+    }
+
+    public String getCorreo() {
+        return this.correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getTipoDeDocumento() {

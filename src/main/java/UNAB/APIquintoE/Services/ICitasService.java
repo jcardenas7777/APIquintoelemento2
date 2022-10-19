@@ -1,13 +1,17 @@
 package UNAB.APIquintoE.Services;
 
+import java.util.List;
+
 import UNAB.APIquintoE.Shared.CitaDto;
 
 public interface ICitasService {
     
-    public CitaDto programarCitas(); 
+     CitaDto programarCitas(CitaDto crearCitaDto);  
 
-    public CitaDto modificarCitas(); 
+     CitaDto modificarCitas(CitaDto modificarCitaDto); 
 
-    public CitaDto leerCitas(); 
+     CitaDto leerCitas(String id); 
+
+     List<CitaDto> obtenerCita(); 
 
 }

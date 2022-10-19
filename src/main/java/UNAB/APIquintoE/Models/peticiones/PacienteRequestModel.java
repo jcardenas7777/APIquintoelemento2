@@ -4,25 +4,17 @@ import java.sql.Date;
 
 public class PacienteRequestModel {
 
-    private long id;
     private String nombre; 
     private String apellido; 
     private String sexo; 
     private Date fechaDeNacimiento; 
     private String edad; 
     private String numeroDeDocumento; 
-    private String tipo; 
+    private String tipoDeDocumento; 
     private String telefonoDeContacto; 
+    private String correo; 
     private String ciudad; 
 
-
-    public long getId() {
-        return this.id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return this.nombre;
@@ -72,12 +64,12 @@ public class PacienteRequestModel {
         this.numeroDeDocumento = numeroDeDocumento;
     }
 
-    public String getTipo() {
-        return this.tipo;
+    public String getTipoDeDocumento() {
+        return this.tipoDeDocumento;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoDeDocumento(String tipoDeDocumento) {
+        this.tipoDeDocumento = tipoDeDocumento;
     }
 
     public String getTelefonoDeContacto() {
@@ -86,6 +78,15 @@ public class PacienteRequestModel {
 
     public void setTelefonoDeContacto(String telefonoDeContacto) {
         this.telefonoDeContacto = telefonoDeContacto;
+    }
+
+
+    public String getCorreo() {
+        return this.correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
     public String getCiudad() {

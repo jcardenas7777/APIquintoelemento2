@@ -1,14 +1,22 @@
 package UNAB.APIquintoE.Data.entidades;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Date;  
+import java.sql.Time;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+                import javax.persistence.Column;
+                import javax.persistence.Entity;
+                import javax.persistence.GeneratedValue;
+                import javax.persistence.Id;
+/* import javax.persistence.Index;
+import javax.persistence.JoinColumn; */
+import javax.persistence.ManyToOne;
+/* import javax.persistence.Table; */
+
+
 
 @Entity(name="citas")
+//@Table(indexes = {@Index(columnList = "id_cita", name = "index_id_cita", unique = true)})
 public class CitasEntity implements Serializable{
 private static final long serialVersionUID=1L; 
     
@@ -16,21 +24,37 @@ private static final long serialVersionUID=1L;
     @GeneratedValue
     private long id; 
 
-    @Column
-    private Date fecha; 
+    @Column(nullable = false)
+    private String idCita; 
 
-    @Column
+    @Column(nullable = false)
+    private Date fechaDeCita; 
+
+    @Column(nullable = false)
     private String numeroDeConsultorio; 
 
-    @Column
-    private String hora; 
+    @Column(nullable = false)
+    private Time hora;
 
-    @Column
-    private String numeroDeDocumento; 
+    @Column(nullable = false)
+    private String numeroDeDocumento;
 
-    @Column
-    private boolean estado; 
+    @Column(nullable = false)
+    private String tipoDeCita;
 
+    @Column(nullable = false)
+    private String notas;
+
+    @Column(nullable = false)
+    private boolean estado;
+
+    @ManyToOne
+//    @JoinColumn(name = "id_paciente")
+    private PacienteEntity pacienteEntity;
+
+
+    // GETERS AND SETTERS. 
+    
 
     public long getId() {
         return this.id;
@@ -40,12 +64,23 @@ private static final long serialVersionUID=1L;
         this.id = id;
     }
 
-    public Date getFecha() {
-        return this.fecha;
+
+    public String getIdCita() {
+        return this.idCita;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setIdCita(String idCita) {
+        this.idCita = idCita;
+    }
+
+
+
+    public Date getFechaDeCita() {
+        return this.fechaDeCita;
+    }
+
+    public void setFechaDeCita(Date fechaDeCita) {
+        this.fechaDeCita = fechaDeCita;
     }
 
     public String getNumeroDeConsultorio() {
@@ -56,11 +91,11 @@ private static final long serialVersionUID=1L;
         this.numeroDeConsultorio = numeroDeConsultorio;
     }
 
-    public String getHora() {
+    public Time getHora() {
         return this.hora;
     }
 
-    public void setHora(String hora) {
+    public void setHora(Time hora) {
         this.hora = hora;
     }
 
@@ -70,6 +105,22 @@ private static final long serialVersionUID=1L;
 
     public void setNumeroDeDocumento(String numeroDeDocumento) {
         this.numeroDeDocumento = numeroDeDocumento;
+    }
+
+    public String getTipoDeCita() {
+        return this.tipoDeCita;
+    }
+
+    public void setTipoDeCita(String tipoDeCita) {
+        this.tipoDeCita = tipoDeCita;
+    }
+
+    public String getNotas() {
+        return this.notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 
     public boolean isEstado() {
@@ -83,4 +134,13 @@ private static final long serialVersionUID=1L;
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public PacienteEntity getPacienteEntity() {
+        return this.pacienteEntity;
+    }
+
+    public void setPacienteEntity(PacienteEntity pacienteEntity) {
+        this.pacienteEntity = pacienteEntity;
+    }
+       
 }
