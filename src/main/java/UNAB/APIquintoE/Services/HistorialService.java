@@ -114,8 +114,19 @@ public class HistorialService implements IHistorialServices {
         return historialDto ;
     }
 
-    
+    @Override
+    public void eliminarHistorial(String id_historia) {
+       HistorialEntity historialEntityDto=iHistorialRepository.findById_historia(id_historia);
+       historialEntityDto.setId_historia(UUID.randomUUID().toString());
 
+      
+       if(historialEntityDto.getId_historia() !=historialEntityDto.getId_historia()){
+
+        throw new RuntimeException("No puede Eliminar este historial");
+
+    }
     
-   
+     iHistorialRepository.delete(historialEntityDto);
+    }
+    
 }
