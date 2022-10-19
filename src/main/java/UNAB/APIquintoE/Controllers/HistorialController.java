@@ -7,7 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import UNAB.APIquintoE.Models.peticiones.HistorialActualizarRequestModel;
 import UNAB.APIquintoE.Models.peticiones.HistorialCrearRequestModel;
 import UNAB.APIquintoE.Models.respuestas.HistorialDataRestModel;
+import UNAB.APIquintoE.Models.respuestas.MensajeRestModel;
 import UNAB.APIquintoE.Services.IHistorialServices;
 import UNAB.APIquintoE.Services.IUsuarioServices;
 import UNAB.APIquintoE.Shared.HistorialDto;
@@ -145,7 +148,18 @@ public class HistorialController {
       }  
         return null;     
    }
+  @DeleteMapping(path = "/{id_historia}")
+  public MensajeRestModel eliminarHistorial(@PathVariable String id_historia){
  
+  HistorialDto historialDto=iHistorialServices.leerHistorial(id_historia);
+  MensajeRestModel mensajeRestModel= new MensajeRestModel();
+  mensajeRestModel.setNombre("Eliminar");
+  iHistorialServices.eliminarHistorial(historialDto.getId_historia());
+  mensajeRestModel.setResultado("Historial eliminado");
+
+   return mensajeRestModel;
+
+ }
 
   } 
   
