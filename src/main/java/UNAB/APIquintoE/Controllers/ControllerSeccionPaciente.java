@@ -65,6 +65,13 @@ public class ControllerSeccionPaciente {
    @GetMapping(path = "/leerpacientes")
     public List<PacienteDataRestModel> leerPacientes() {
 
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String username = authentication.getPrincipal().toString();
+      
+      UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
+
+      if (usuarioDtoLogin.getRolEntity().getId()==3 ) {
+
       List<PacienteDto> pacienteDtoList= iPacienteService.leerListaPacientes(); 
       List<PacienteDataRestModel> pacienteDataRestModelList= new ArrayList<>(); 
       for (PacienteDto pacienteDto : pacienteDtoList) {
@@ -73,17 +80,30 @@ public class ControllerSeccionPaciente {
       }
 
         return pacienteDataRestModelList; 
+      }return null;
+
     }  
     
     @GetMapping(path = "/{idPaciente}")
     public PacienteDataRestModel detalleCita(@PathVariable String idPaciente){
        /*  System.out.println("Salida #1" + id);  */
 
+       
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String username = authentication.getPrincipal().toString();
+      
+      UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
+
+      if (usuarioDtoLogin.getRolEntity().getId()==3 ) {
+
         PacienteDto pacienteLeerDto= iPacienteService.leerDatosPaciente(idPaciente);
          
         PacienteDataRestModel leerPacienteDataRestModel= modelMapper.map(pacienteLeerDto, PacienteDataRestModel.class); 
 
         return leerPacienteDataRestModel; 
+
+      } 
+      return null;
     }
 
 
