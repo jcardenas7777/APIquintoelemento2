@@ -21,6 +21,14 @@ public class HistorialDto implements Serializable {
     private String diagnostico;
     private String formula;
 
+    public String getIdHistoria() {
+        return this.idHistoria;
+    }
+
+    public void setIdHistoria(String idHistoria) {
+        this.idHistoria = idHistoria;
+    }
+
     public Long getID() {
         return this.ID;
     }
@@ -36,6 +44,7 @@ public class HistorialDto implements Serializable {
     public void setIdHistoria(String idHistoria) {
         this.idHistoria = idHistoria;
     }
+
 
     public String getNombre() {
         return this.nombre;

@@ -79,11 +79,11 @@ public class CitasService implements ICitasService {
     }
 
     @Override
-    public List<CitaDto> citasPorConsultorio(String numeroDeConsultorio) {
+    public List<CitaDto> citasPorConsultorio() {
 
       System.out.println("Salida numero #1.1");
         
-        List<CitasEntity> citasEntityList = iCitasRepositorio.findAllByNumeroDeConsultorio(numeroDeConsultorio);
+        List<CitasEntity> citasEntityList = iCitasRepositorio.citasPorConsultorio();
         List<CitaDto> citaDtoList= new ArrayList<>(); 
 
       System.out.println("Salida numero #1.2" + citasEntityList); 

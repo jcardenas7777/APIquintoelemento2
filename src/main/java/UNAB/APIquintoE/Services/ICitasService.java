@@ -15,7 +15,7 @@ public interface ICitasService {
 
      List<CitaDto> obtenerCita(); 
 
-     List<CitaDto> citasPorConsultorio(String numeroDeConsultorio); 
+     List<CitaDto> citasPorConsultorio(); 
 
 }
 

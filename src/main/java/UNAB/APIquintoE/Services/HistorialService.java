@@ -115,8 +115,13 @@ public class HistorialService implements IHistorialServices {
     }
 
     @Override
+
     public void eliminarHistorial(String id_historia) {
        HistorialEntity historialEntityDto=iHistorialRepository.findByIdHistoria(id_historia);
+
+    public void eliminarHistorial(String idHistoria) {
+       HistorialEntity historialEntityDto=iHistorialRepository.findByIdHistoria(idHistoria);
+
        historialEntityDto.setIdHistoria(UUID.randomUUID().toString());
 
       

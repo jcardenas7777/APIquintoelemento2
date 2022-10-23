@@ -116,6 +116,12 @@ public class ControllerSeccionCitas {
     @GetMapping(path = "/numerodeconsultorio")
     public List<CitasDataRestModel> citasPorConsultorio(@RequestBody String  numeroDeConsultorio) {
 
+
+        System.out.println("Salida numero #1" + numeroDeConsultorio);
+      List<CitaDto> citaDtoList= iCitasService.citasPorConsultorio(); 
+      List<CitasDataRestModel> citasDataRestModelList= new ArrayList<>(); 
+
+
       
       Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
       String username = authentication.getPrincipal().toString();
