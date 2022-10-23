@@ -13,9 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 import UNAB.APIquintoE.Models.peticiones.PacienteRequestModel;
 import UNAB.APIquintoE.Models.respuestas.PacienteDataRestModel;
 import UNAB.APIquintoE.Services.IPacienteService;
+import UNAB.APIquintoE.Services.IUsuarioServices;
 import UNAB.APIquintoE.Shared.PacienteDto;
+import UNAB.APIquintoE.Shared.UsuarioDto;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 
 
@@ -32,15 +37,29 @@ public class ControllerSeccionPaciente {
     @Autowired
     IPacienteService iPacienteService; 
 
+    @Autowired
+    IUsuarioServices iUsuarioServices;
     
     @PostMapping
     public PacienteDataRestModel crearpaciente(@RequestBody PacienteRequestModel pacienteCrearRequestModel){
         
+      
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String username = authentication.getPrincipal().toString();
+      
+      UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
+
+      if (usuarioDtoLogin.getRolEntity().getId()==3 ) {
+
+
     PacienteDto pacienteCrearDto= modelMapper.map(pacienteCrearRequestModel, PacienteDto.class); 
     PacienteDto pacienteDto= iPacienteService.crearPaciente(pacienteCrearDto); 
     PacienteDataRestModel pacienteDataRestModel= modelMapper.map(pacienteDto, PacienteDataRestModel.class); 
 
-    return pacienteDataRestModel; 
+    return pacienteDataRestModel;
+      }
+      
+      return null;
     }
 
    @GetMapping(path = "/leerpacientes")
