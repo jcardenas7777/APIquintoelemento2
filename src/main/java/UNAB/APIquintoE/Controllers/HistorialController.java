@@ -148,13 +148,13 @@ public class HistorialController {
       }  
         return null;     
    }
-  @DeleteMapping(path = "/{id_historia}")
-  public MensajeRestModel eliminarHistorial(@PathVariable String id_historia){
+  @DeleteMapping(path = "/{idHistoria}")
+  public MensajeRestModel eliminarHistorial(@PathVariable String idHistoria){
  
-  HistorialDto historialDto=iHistorialServices.leerHistorial(id_historia);
+  HistorialDto historialDto=iHistorialServices.leerHistorial(idHistoria);
   MensajeRestModel mensajeRestModel= new MensajeRestModel();
   mensajeRestModel.setNombre("Eliminar");
-  iHistorialServices.eliminarHistorial(historialDto.getId_historia());
+  iHistorialServices.eliminarHistorial(historialDto.getIdHistoria());
   mensajeRestModel.setResultado("Historial eliminado");
 
    return mensajeRestModel;
