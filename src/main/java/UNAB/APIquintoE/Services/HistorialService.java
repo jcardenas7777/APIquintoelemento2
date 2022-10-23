@@ -35,7 +35,7 @@ public class HistorialService implements IHistorialServices {
     }
 
        HistorialEntity historialEntityDto=modelMapper.map(crearHistorialDto, HistorialEntity.class);
-       historialEntityDto.setId_historia(UUID.randomUUID().toString());
+       historialEntityDto.setIdHistoria(UUID.randomUUID().toString());
 
        HistorialEntity historialEntity=iHistorialRepository.save(historialEntityDto);
        
@@ -114,8 +114,19 @@ public class HistorialService implements IHistorialServices {
         return historialDto ;
     }
 
-    
+    @Override
+    public void eliminarHistorial(String idHistoria) {
+       HistorialEntity historialEntityDto=iHistorialRepository.findByIdHistoria(idHistoria);
+       historialEntityDto.setIdHistoria(UUID.randomUUID().toString());
 
+      
+       if(historialEntityDto.getIdHistoria() !=historialEntityDto.getIdHistoria()){
+
+        throw new RuntimeException("No puede Eliminar este historial");
+
+    }
     
-   
+     iHistorialRepository.delete(historialEntityDto);
+    }
+    
 }

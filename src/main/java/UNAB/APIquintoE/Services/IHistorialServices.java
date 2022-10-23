@@ -16,5 +16,5 @@ public interface IHistorialServices {
     /* TRAE TODOS LOS HISTORIALES DE LA BASE DE DATOS */
     List <HistorialDto> historialesCreados();
 
-    
+    public void eliminarHistorial(String id_historia);
 }
