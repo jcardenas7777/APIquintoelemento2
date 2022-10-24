@@ -7,7 +7,7 @@ public class HistorialDto implements Serializable {
     private static final long serialVersionUID=1L;
     
     private long ID;    
-    private String id_historia;
+    private String idHistoria;
     private String nombre;
     private String apellidos;
     private String documento;
@@ -21,6 +21,14 @@ public class HistorialDto implements Serializable {
     private String diagnostico;
     private String formula;
 
+    public String getIdHistoria() {
+        return this.idHistoria;
+    }
+
+    public void setIdHistoria(String idHistoria) {
+        this.idHistoria = idHistoria;
+    }
+
     public Long getID() {
         return this.ID;
     }
@@ -29,13 +37,8 @@ public class HistorialDto implements Serializable {
         this.ID = ID;
     }
 
-    public String getId_historia() {
-        return this.id_historia;
-    }
-
-    public void setId_historia(String id_historia) {
-        this.id_historia = id_historia;
-    }
+   
+    
 
     public String getNombre() {
         return this.nombre;
