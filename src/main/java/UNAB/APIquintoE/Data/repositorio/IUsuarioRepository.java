@@ -15,4 +15,6 @@ public interface IUsuarioRepository extends CrudRepository<UsuarioEntity, Long>{
     UsuarioEntity findByUsername (String username);
     UsuarioEntity findByDocumento (String documento); 
     List <UsuarioEntity> findAll();
+
+
 }
