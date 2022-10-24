@@ -1,7 +1,7 @@
 package UNAB.APIquintoE.Models.peticiones;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 public class PacienteRequestModel {
 
