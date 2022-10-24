@@ -71,7 +71,7 @@ public class UsuarioController {
     
     @GetMapping(path = "/verusuarios")
     public List<UsuarioDataRestModel> verUsuarios(){
-
+       
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getPrincipal().toString();
 

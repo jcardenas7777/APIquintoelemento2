@@ -10,12 +10,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -25,6 +27,7 @@ import UNAB.APIquintoE.Shared.UsuarioDto;
 import UNAB.APIquintoE.Utils.AppContexto;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
+
 import io.jsonwebtoken.security.Keys;
 
 public class UsuarioAutenticacion extends UsernamePasswordAuthenticationFilter{
@@ -78,10 +81,11 @@ public class UsuarioAutenticacion extends UsernamePasswordAuthenticationFilter{
         //traemos el Username a travez de los servicios y lo guardamos con un Dto para enviar lo que queramos al front por el header
         UsuarioDto usuarioDto = iUsuarioServices.leerUsuario(username);
 
-        response.addHeader("Access-Control-Exponse-Header", "Authorization. IdUsuario");
+        response.addHeader("Access-Control-Expose-Headers", "Authorization, IdUsuario, RolUsuario");
         response.addHeader("IdUsuario", usuarioDto.getIdUsuario());  
         response.addHeader("RolUsuario", usuarioDto.getRolEntity().getNombreRol());      
         response.addHeader(ConstantesSecurity.HEADER_STRING, ConstantesSecurity.TOKEN_PREFIJO+token);
     }
 
+   
 }
