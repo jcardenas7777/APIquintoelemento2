@@ -25,6 +25,8 @@ public class HistorialEntity implements Serializable {
     @ Column(nullable = false)
     private String idHistoria;
 
+
+
     public String getIdHistoria() {
         return this.idHistoria;
     }
@@ -32,6 +34,7 @@ public class HistorialEntity implements Serializable {
     public void setIdHistoria(String idHistoria) {
         this.idHistoria = idHistoria;
     }
+
 
     @Column(nullable = false)
     private String nombre;
@@ -77,7 +80,15 @@ public class HistorialEntity implements Serializable {
         this.Id = Id;
     }
 
-  
+
+    public String getIdHistoria() {
+        return this.idHistoria;
+    }
+
+    public void setIdHistoria(String idHistoria) {
+        this.idHistoria = idHistoria;
+    }
+
 
     public String getNombre() {
         return this.nombre;

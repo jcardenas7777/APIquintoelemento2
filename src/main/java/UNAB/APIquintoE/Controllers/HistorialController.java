@@ -147,7 +147,11 @@ public class HistorialController {
       }  
         return null;     
    }
+
+  @DeleteMapping(path = "/{idHistoria}")
+=======
   @DeleteMapping(path = "/{id_historia}")
+
   public MensajeRestModel eliminarHistorial(@PathVariable String idHistoria){
  
   HistorialDto historialDto=iHistorialServices.leerHistorial(idHistoria);

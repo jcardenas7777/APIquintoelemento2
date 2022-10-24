@@ -78,7 +78,7 @@ public class UsuarioAutenticacion extends UsernamePasswordAuthenticationFilter{
         //traemos el Username a travez de los servicios y lo guardamos con un Dto para enviar lo que queramos al front por el header
         UsuarioDto usuarioDto = iUsuarioServices.leerUsuario(username);
 
-        response.addHeader("Access-Control-Exponse-Header", "Authorization. IdUsuario");
+        response.addHeader("Access-Control-Exponse-Header", "Authorization, IdUsuario");
         response.addHeader("IdUsuario", usuarioDto.getIdUsuario());  
         response.addHeader("RolUsuario", usuarioDto.getRolEntity().getNombreRol());      
         response.addHeader(ConstantesSecurity.HEADER_STRING, ConstantesSecurity.TOKEN_PREFIJO+token);

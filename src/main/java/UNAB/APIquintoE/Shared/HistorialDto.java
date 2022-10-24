@@ -37,8 +37,14 @@ public class HistorialDto implements Serializable {
         this.ID = ID;
     }
 
-   
-    
+    public String getIdHistoria() {
+        return this.idHistoria;
+    }
+
+    public void setIdHistoria(String idHistoria) {
+        this.idHistoria = idHistoria;
+    }
+
 
     public String getNombre() {
         return this.nombre;
