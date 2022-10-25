@@ -14,7 +14,7 @@ public class PacienteRequestModel {
     private String tipoDeDocumento; 
     private String telefonoDeContacto; 
     private String correo; 
-    private String ciudad; 
+    private String direccion; 
 
 
     public String getNombre() {
@@ -90,13 +90,14 @@ public class PacienteRequestModel {
         this.correo = correo;
     }
 
-    public String getCiudad() {
-        return this.ciudad;
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
+    
 }
 

@@ -41,7 +41,7 @@ private static final long serialVersionUID=1L;
     @Column
     private String correo; 
     @Column
-    private String ciudad; 
+    private String direccion; 
 
 // GETTERS ANS SETTERS. 
     public long getId() {
@@ -132,12 +132,12 @@ private static final long serialVersionUID=1L;
         this.correo = correo;
     }
 
-    public String getCiudad() {
-        return this.ciudad;
+    public String getDireccion() {
+        return this.direccion;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
    

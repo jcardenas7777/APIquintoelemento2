@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,11 +14,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import UNAB.APIquintoE.Data.repositorio.ICitasRepositorio;
 /* import UNAB.APIquintoE.Data.entidades.CitasEntity; */
 import UNAB.APIquintoE.Models.peticiones.CitasRequestModel;
 import UNAB.APIquintoE.Models.respuestas.CitasDataRestModel;
 import UNAB.APIquintoE.Services.ICitasService;
+import UNAB.APIquintoE.Services.IUsuarioServices;
 import UNAB.APIquintoE.Shared.CitaDto;
+import UNAB.APIquintoE.Shared.UsuarioDto;
 
 @RestController
 @RequestMapping("/citas") 
@@ -31,21 +36,38 @@ public class ControllerSeccionCitas {
 
     @Autowired
     ICitasService iCitasService;  
+
+
+    @Autowired
+    IUsuarioServices iUsuarioServices;
 /* 
     @Autowired
     CitasEntity citasEntity; 
     */
+    @Autowired
+    ICitasRepositorio iCitasRepositorio;
+
     @PostMapping
     public CitasDataRestModel crearCita(@RequestBody CitasRequestModel crearCitasRequestModel){
-        
-            CitaDto crearCitaDto= modelMapper.map(crearCitasRequestModel, CitaDto.class); 
-            //if (iCitasRepositorio.findbyfecha(crearCitaDto.getFechaDeCita())!=null) {
-            CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
-            CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
 
-            return citasDataRestModel; 
-        //}
-        //throw new RuntimeException("/********************/ Fecha ocupada. /***********************/");
+      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+      String username = authentication.getPrincipal().toString();
+      
+      UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
+  
+      if (usuarioDtoLogin.getRolEntity().getId()==3 ) {  
+
+            CitaDto crearCitaDto= modelMapper.map(crearCitasRequestModel, CitaDto.class); 
+            if (iCitasRepositorio.findByFechaDeCita(crearCitaDto.getFechaDeCita())!=null) {
+              CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
+              CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
+
+              return citasDataRestModel;}
+            
+              throw new RuntimeException("/********************/ Fecha ocupada. /***********************/");
+        }
+        return null;
+        
     }
 
     @GetMapping

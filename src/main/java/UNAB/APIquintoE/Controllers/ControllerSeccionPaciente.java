@@ -65,7 +65,7 @@ public class ControllerSeccionPaciente {
 
   }
 
-   @GetMapping(path = "/leerpacientes")
+   @GetMapping(path = "/verpacientes")
     public List<PacienteDataRestModel> leerPacientes() {
 
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -88,7 +88,7 @@ public class ControllerSeccionPaciente {
     }  
     
     @GetMapping(path = "/{idPaciente}")
-    public PacienteDataRestModel detalleCita(@PathVariable String idPaciente){
+    public PacienteDataRestModel detallePaciente(@PathVariable String idPaciente){
        /*  System.out.println("Salida #1" + id);  */
 
        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

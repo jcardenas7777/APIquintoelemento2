@@ -2,7 +2,7 @@ package UNAB.APIquintoE.Models.respuestas;
 
 
 import java.sql.Date;
-import java.sql.Time;
+
 
 import UNAB.APIquintoE.Data.entidades.PacienteEntity;
 
@@ -11,7 +11,7 @@ public class CitasDataRestModel {
     private String idCita;
     private Date fechaDeCita;
     private String numeroDeConsultorio;
-    private Time hora;
+    private String hora;
     private String numeroDeDocumento;
     private boolean estado;
     private String tipoDeCita;
@@ -44,11 +44,11 @@ public class CitasDataRestModel {
         this.numeroDeConsultorio = numeroDeConsultorio;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return this.hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

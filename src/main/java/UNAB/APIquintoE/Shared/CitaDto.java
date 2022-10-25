@@ -3,7 +3,7 @@ package UNAB.APIquintoE.Shared;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
+
 
 import UNAB.APIquintoE.Data.entidades.PacienteEntity;
 
@@ -16,7 +16,7 @@ private static final long serialVersionUID=1L;
     private String nombre; 
     private String apellido; 
     private String numeroDeConsultorio; 
-    private Time hora; 
+    private String hora; 
     private String numeroDeDocumento; 
     private boolean estado;  
     private String tipoDeCita; 
@@ -74,11 +74,11 @@ private static final long serialVersionUID=1L;
         this.numeroDeConsultorio = numeroDeConsultorio;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return this.hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 

@@ -1,7 +1,7 @@
 package UNAB.APIquintoE.Models.peticiones;
 
 
-import java.sql.Time;
+
 import java.sql.Date;
 
 public class CitasRequestModel {
@@ -10,7 +10,7 @@ public class CitasRequestModel {
     private String numeroDeDocumento;
     private String numeroDeConsultorio; 
     private Date fechaDeCita; 
-    private Time hora;
+    private String hora;
     private String notas;
     private String tipoDeCita;
    
@@ -43,11 +43,11 @@ public class CitasRequestModel {
         this.fechaDeCita = fechaDeCita;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return this.hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
