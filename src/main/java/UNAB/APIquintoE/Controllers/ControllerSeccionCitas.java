@@ -58,15 +58,12 @@ public class ControllerSeccionCitas {
       if (usuarioDtoLogin.getRolEntity().getId()==3 ) {  
 
             CitaDto crearCitaDto= modelMapper.map(crearCitasRequestModel, CitaDto.class); 
-            if (iCitasRepositorio.findByFechaDeCita(crearCitaDto.getFechaDeCita())!=null) {
+            
               CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
               CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
 
-              return citasDataRestModel;}
-            
-              throw new RuntimeException("/********************/ Fecha ocupada. /***********************/");
-        }
-        return null;
+              return citasDataRestModel;
+            }return null;
         
     }
 
