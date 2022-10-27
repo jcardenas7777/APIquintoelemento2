@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import UNAB.APIquintoE.Data.repositorio.ICitasRepositorio;
+import UNAB.APIquintoE.Models.peticiones.CitasConsultorioRequestModel;
 /* import UNAB.APIquintoE.Data.entidades.CitasEntity; */
 import UNAB.APIquintoE.Models.peticiones.CitasRequestModel;
 import UNAB.APIquintoE.Models.respuestas.CitasDataRestModel;
@@ -100,9 +101,11 @@ public class ControllerSeccionCitas {
     } 
 
     @GetMapping(path = "/numerodeconsultorio")
-    public List<CitasDataRestModel> citasPorConsultorio(@RequestBody String  numeroDeConsultorio) {
-        System.out.println("Salida numero #1" + numeroDeConsultorio);
-      List<CitaDto> citaDtoList= iCitasService.citasPorConsultorio(); 
+    public List<CitasDataRestModel> citasPorConsultorio(@RequestBody CitasConsultorioRequestModel citasConsultorioRequestModel) {
+       
+
+      CitaDto citaDtoConsultorio = modelMapper.map(citasConsultorioRequestModel, CitaDto.class);
+      List<CitaDto> citaDtoList= iCitasService.citasPorConsultorio(citaDtoConsultorio.getNumeroDeConsultorio()); 
       List<CitasDataRestModel> citasDataRestModelList= new ArrayList<>(); 
 
 
