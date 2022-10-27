@@ -46,12 +46,12 @@ public class HistorialService implements IHistorialServices {
     }
 
     @Override
-    public HistorialDto leerHistorial(String documento) {
+    public HistorialDto leerHistorial(String id) {
         
-        HistorialEntity historialEntity=iHistorialRepository.findByDocumento(documento);
+        HistorialEntity historialEntity=iHistorialRepository.findByDocumento(id);
 
         if(historialEntity==null){
-            throw new UsernameNotFoundException(documento);
+            throw new UsernameNotFoundException(id);
 
         }
         HistorialDto historialDto=modelMapper.map(historialEntity, HistorialDto.class);

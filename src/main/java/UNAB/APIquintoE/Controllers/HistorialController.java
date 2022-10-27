@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+
 import UNAB.APIquintoE.Models.peticiones.HistorialActualizarRequestModel;
+import UNAB.APIquintoE.Models.peticiones.HistorialBuscarRequestModel;
 import UNAB.APIquintoE.Models.peticiones.HistorialCrearRequestModel;
 import UNAB.APIquintoE.Models.respuestas.HistorialDataRestModel;
 import UNAB.APIquintoE.Models.respuestas.MensajeRestModel;
@@ -30,6 +32,7 @@ import UNAB.APIquintoE.Shared.UsuarioDto;
 @RequestMapping("/historial")
 public class HistorialController {
 
+
   @Autowired
   ModelMapper modelMapper;
   @Autowired
@@ -38,20 +41,20 @@ public class HistorialController {
   @Autowired
   IUsuarioServices iUsuarioServices;
 
-  @GetMapping
-  public HistorialDataRestModel leerHistorial(){
+  @GetMapping(path = "/{id}")
+  public HistorialDataRestModel leerHistorial( String id){
 
-    
+   id=HistorialBuscarRequestModel.getIdHistoria.toString();
 
-    String documento="1214714596";
-    HistorialDto historialDto=iHistorialServices.leerHistorial(documento);
+
+    HistorialDto historialDto=iHistorialServices.leerHistorial(id);
 
     HistorialDataRestModel historialDataRestModel=modelMapper.map(historialDto,HistorialDataRestModel.class);
     return historialDataRestModel;
 
   }
    @GetMapping(path = "/mihistorial")
-   public List<HistorialDataRestModel>verHistorial(){
+   public List<HistorialDataRestModel>verHistorial(String documento){
 
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String username = authentication.getPrincipal().toString();
@@ -60,7 +63,7 @@ public class HistorialController {
 
     if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-        String documento="1214474";
+       documento=HistorialBuscarRequestModel.getIdHistoria.toString();
 
         List<HistorialDto>historialDtoList= iHistorialServices.verHistorial(documento);
 
@@ -135,7 +138,7 @@ public class HistorialController {
 
       if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-          documento="1214474";
+          documento=HistorialBuscarRequestModel.getIdHistoria.toString();
           HistorialDto historialDtoActualizar=modelMapper.map(historialActualizarRequestModel, HistorialDto.class);
 
           historialDtoActualizar.setDocumento(documento);
@@ -147,7 +150,7 @@ public class HistorialController {
       }  
         return null;     
    }
-  @DeleteMapping(path = "/{id_historia}")
+  @DeleteMapping(path = "/{idhistoria}")
   public MensajeRestModel eliminarHistorial(@PathVariable String idHistoria){
  
   HistorialDto historialDto=iHistorialServices.leerHistorial(idHistoria);

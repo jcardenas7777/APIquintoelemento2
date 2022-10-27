@@ -3,6 +3,7 @@ package UNAB.APIquintoE.Models.respuestas;
 import java.sql.Date;
 
 public class HistorialDataRestModel {
+    private String idhistoria;
     private String nombre;
     private String apellidos;
     private String documento;
@@ -13,6 +14,14 @@ public class HistorialDataRestModel {
     private String enfermedad_actual;
     private String revision_sistema;
     private String examen_fisico;
+
+    public String getIdhistoria() {
+        return this.idhistoria;
+    }
+
+    public void setIdhistoria(String idhistoria) {
+        this.idhistoria = idhistoria;
+    }
     private String diagnostico;
     private String formula;
 

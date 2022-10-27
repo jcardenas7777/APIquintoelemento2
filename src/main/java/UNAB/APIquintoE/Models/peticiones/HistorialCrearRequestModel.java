@@ -3,7 +3,7 @@ package UNAB.APIquintoE.Models.peticiones;
 import java.sql.Date;
 
 public class HistorialCrearRequestModel {
-    private String id_historia;
+    private String idhistoria;
     private String nombre;
     private String apellidos;
     private String documento;
@@ -18,11 +18,11 @@ public class HistorialCrearRequestModel {
     private String formula;
 
     public String getId_historia() {
-        return this.id_historia;
+        return this.idhistoria;
     }
 
     public void setId_historia(String id_historia) {
-        this.id_historia = id_historia;
+        this.idhistoria = id_historia;
     }
 
     public String getNombre() {
