@@ -2,6 +2,7 @@ package UNAB.APIquintoE.Services;
 
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -78,12 +79,12 @@ public class CitasService implements ICitasService {
         return citaDtoList;
     }
 
-    @Override
-    public List<CitaDto> citasPorConsultorio() {
 
-      System.out.println("Salida numero #1.1");
-        
-        List<CitasEntity> citasEntityList = iCitasRepositorio.citasPorConsultorio();
+
+    @Override
+    public List<CitaDto> citasPorConsultorio(String numeroDeConsultorio) {
+
+        List<CitasEntity> citasEntityList = iCitasRepositorio.findAllByNumeroDeConsultorio(numeroDeConsultorio);
         List<CitaDto> citaDtoList= new ArrayList<>(); 
 
       System.out.println("Salida numero #1.2" + citasEntityList); 
@@ -96,6 +97,8 @@ public class CitasService implements ICitasService {
         }
         return citaDtoList;
     }
+
+
 
 }
 

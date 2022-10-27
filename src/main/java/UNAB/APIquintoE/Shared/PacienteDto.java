@@ -16,7 +16,7 @@ private static final long serialVersionUID=1L;
     private String edad; 
     private String numeroDeDocumento; 
     private String telefonoDeContacto; 
-    private String ciudad; 
+    private String direccion; 
     private String correo; 
     private String tipoDeDocumento;
     
@@ -94,12 +94,14 @@ private static final long serialVersionUID=1L;
         this.telefonoDeContacto = telefonoDeContacto;
     }
 
-    public String getCiudad() {
-        return this.ciudad;
+
+
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getCorreo() {

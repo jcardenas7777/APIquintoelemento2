@@ -26,40 +26,40 @@ public class UsuarioEntity implements Serializable {
     @GeneratedValue
     private long id;
 
-    @Column(nullable=false)
+    @Column(nullable=true)
     private String idUsuario;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String nombres;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String apellidos;
     
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String tipoDocumento;
     
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String documento;
 
-    @Column (nullable = false)
+    @Column (nullable = true)
     private Date   fechaDeNacimiento;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String email;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String username;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String password;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String passwordEncriptada;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String direccion;
 
-    @Column(nullable=false, length = 100)
+    @Column(nullable=true, length = 100)
     private String celular;
 
     @ManyToOne

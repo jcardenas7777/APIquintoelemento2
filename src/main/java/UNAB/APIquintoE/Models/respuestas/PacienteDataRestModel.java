@@ -14,7 +14,7 @@ public class PacienteDataRestModel {
     private String numeroDeDocumento; 
     private String tipoDeDocumento; 
     private String telefonoDeContacto; 
-    private String ciudad;
+    private String direccion;
     private String idPaciente;
 
 
@@ -82,13 +82,7 @@ public class PacienteDataRestModel {
         this.telefonoDeContacto = telefonoDeContacto;
     }
 
-    public String getCiudad() {
-        return this.ciudad;
-    }
 
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
 
     public String getIdPaciente() {
         return this.idPaciente;
@@ -97,4 +91,14 @@ public class PacienteDataRestModel {
     public void setIdPaciente(String idPaciente) {
         this.idPaciente = idPaciente;
     }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    
 }

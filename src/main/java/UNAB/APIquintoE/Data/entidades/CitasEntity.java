@@ -2,7 +2,7 @@ package UNAB.APIquintoE.Data.entidades;
 
 import java.io.Serializable;
 import java.sql.Date;  
-import java.sql.Time;
+
 
                 import javax.persistence.Column;
                 import javax.persistence.Entity;
@@ -34,7 +34,7 @@ private static final long serialVersionUID=1L;
     private String numeroDeConsultorio; 
 
     @Column(nullable = false)
-    private Time hora;
+    private String hora;
 
     @Column(nullable = false)
     private String numeroDeDocumento;
@@ -91,11 +91,11 @@ private static final long serialVersionUID=1L;
         this.numeroDeConsultorio = numeroDeConsultorio;
     }
 
-    public Time getHora() {
+    public String getHora() {
         return this.hora;
     }
 
-    public void setHora(Time hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
