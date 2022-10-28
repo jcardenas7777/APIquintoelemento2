@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import UNAB.APIquintoE.Data.repositorio.ICitasRepositorio;
-import UNAB.APIquintoE.Models.peticiones.CitasConsultorioRequestModel;
+// import UNAB.APIquintoE.Models.peticiones.CitasConsultorioRequestModel;
 /* import UNAB.APIquintoE.Data.entidades.CitasEntity; */
 import UNAB.APIquintoE.Models.peticiones.CitasRequestModel;
 import UNAB.APIquintoE.Models.respuestas.CitasDataRestModel;
@@ -57,11 +57,11 @@ public class ControllerSeccionCitas {
       UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
   
       if (usuarioDtoLogin.getRolEntity().getId()==3 ) {  
-
+          
             CitaDto crearCitaDto= modelMapper.map(crearCitasRequestModel, CitaDto.class); 
             
-              CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
-              CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
+            CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
+            CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
 
               return citasDataRestModel;
             }return null;
@@ -100,12 +100,12 @@ public class ControllerSeccionCitas {
         return citasDataRestModelList; 
     } 
 
-    @GetMapping(path = "/numerodeconsultorio")
-    public List<CitasDataRestModel> citasPorConsultorio(@RequestBody CitasConsultorioRequestModel citasConsultorioRequestModel) {
+    @GetMapping(path = "/consultorio/{consultorio}")
+    public List<CitasDataRestModel> citasPorConsultorio(@PathVariable String consultorio) {
        
 
-      CitaDto citaDtoConsultorio = modelMapper.map(citasConsultorioRequestModel, CitaDto.class);
-      List<CitaDto> citaDtoList= iCitasService.citasPorConsultorio(citaDtoConsultorio.getNumeroDeConsultorio()); 
+      // CitaDto citaDtoConsultorio = modelMapper.map(citasConsultorioRequestModel, CitaDto.class);
+      List<CitaDto> citaDtoList= iCitasService.citasPorConsultorio(consultorio); 
       List<CitasDataRestModel> citasDataRestModelList= new ArrayList<>(); 
 
 
