@@ -8,7 +8,7 @@ public class CitasRequestModel {
     
    
     private String numeroDeDocumento;
-    private String numeroDeConsultorio; 
+    private String consultorio; 
     private Date fechaDeCita; 
     private String hora;
     private String notas;
@@ -26,13 +26,7 @@ public class CitasRequestModel {
     }
 
 
-    public String getNumeroDeConsultorio() {
-        return this.numeroDeConsultorio;
-    }
 
-    public void setNumeroDeConsultorio(String numeroDeConsultorio) {
-        this.numeroDeConsultorio = numeroDeConsultorio;
-    }
 
 
     public Date getFechaDeCita() {
@@ -65,5 +59,13 @@ public class CitasRequestModel {
 
     public void setTipoDeCita(String TipoDeCita) {
         this.tipoDeCita = TipoDeCita;
+    }
+
+    public String getConsultorio() {
+        return consultorio;
+    }
+
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
     }
 }

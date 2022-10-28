@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.sql.Date;  
 
 
-                import javax.persistence.Column;
-                import javax.persistence.Entity;
-                import javax.persistence.GeneratedValue;
-                import javax.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 /* import javax.persistence.Index;
 import javax.persistence.JoinColumn; */
 import javax.persistence.ManyToOne;
@@ -31,7 +31,7 @@ private static final long serialVersionUID=1L;
     private Date fechaDeCita; 
 
     @Column(nullable = false)
-    private String numeroDeConsultorio; 
+    private String consultorio; 
 
     @Column(nullable = false)
     private String hora;
@@ -83,12 +83,14 @@ private static final long serialVersionUID=1L;
         this.fechaDeCita = fechaDeCita;
     }
 
-    public String getNumeroDeConsultorio() {
-        return this.numeroDeConsultorio;
+
+
+    public String getConsultorio() {
+        return consultorio;
     }
 
-    public void setNumeroDeConsultorio(String numeroDeConsultorio) {
-        this.numeroDeConsultorio = numeroDeConsultorio;
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
     }
 
     public String getHora() {

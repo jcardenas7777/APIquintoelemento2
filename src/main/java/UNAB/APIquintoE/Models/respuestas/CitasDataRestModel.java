@@ -10,7 +10,7 @@ public class CitasDataRestModel {
 
     private String idCita;
     private Date fechaDeCita;
-    private String numeroDeConsultorio;
+    private String consultorio;
     private String hora;
     private String numeroDeDocumento;
     private boolean estado;
@@ -36,13 +36,7 @@ public class CitasDataRestModel {
         this.fechaDeCita = FechaDeCita;
     }
 
-    public String getNumeroDeConsultorio() {
-        return this.numeroDeConsultorio;
-    }
 
-    public void setNumeroDeConsultorio(String numeroDeConsultorio) {
-        this.numeroDeConsultorio = numeroDeConsultorio;
-    }
 
     public String getHora() {
         return this.hora;
@@ -90,6 +84,14 @@ public class CitasDataRestModel {
 
     public void setPacienteEntity(PacienteEntity pacienteEntity) {
         this.pacienteEntity = pacienteEntity;
+    }
+
+    public String getConsultorio() {
+        return consultorio;
+    }
+
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
     }
 
 }

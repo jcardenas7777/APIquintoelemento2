@@ -15,7 +15,7 @@ private static final long serialVersionUID=1L;
     private Date fechaDeCita; 
     private String nombre; 
     private String apellido; 
-    private String numeroDeConsultorio; 
+    private String consultorio; 
     private String hora; 
     private String numeroDeDocumento; 
     private boolean estado;  
@@ -66,12 +66,14 @@ private static final long serialVersionUID=1L;
         this.apellido = apellido;
     }
 
-    public String getNumeroDeConsultorio() {
-        return this.numeroDeConsultorio;
+
+
+    public String getConsultorio() {
+        return consultorio;
     }
 
-    public void setNumeroDeConsultorio(String numeroDeConsultorio) {
-        this.numeroDeConsultorio = numeroDeConsultorio;
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
     }
 
     public String getHora() {

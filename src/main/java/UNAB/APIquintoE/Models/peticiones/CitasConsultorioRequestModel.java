@@ -4,23 +4,14 @@ package UNAB.APIquintoE.Models.peticiones;
 
 public class CitasConsultorioRequestModel {
     
-    private String numeroDeConsultorio;
-  
+    private String consultorio;
 
-    public String getNumeroDeConsultorio() {
-        return numeroDeConsultorio;
-    }
-    public void setNumeroDeConsultorio(String numeroDeConsultorio) {
-        this.numeroDeConsultorio = numeroDeConsultorio;
+    public String getConsultorio() {
+        return consultorio;
     }
 
-
-  
-   
-
-    
-
-
-
+    public void setConsultorio(String consultorio) {
+        this.consultorio = consultorio;
+    }
 
 }

@@ -15,7 +15,7 @@ public interface ICitasRepositorio extends CrudRepository<CitasEntity, Long> {
     
     CitasEntity findByFechaDeCita(Date fechaDeCita); 
 
-    List<CitasEntity> findAllByNumeroDeConsultorio(String numeroDeConsultorio); 
+    List<CitasEntity> findAllByConsultorio(String Consultorio); 
    
     CitasEntity findByIdCita(String id); 
 
