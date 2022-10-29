@@ -9,7 +9,9 @@ public interface IPacienteService {
     
     public PacienteDto crearPaciente(PacienteDto pacienteDto); 
 
-    public PacienteDto leerDatosPaciente(String numeroDeDocumento); 
+    public PacienteDto leerDatosPaciente(String idPaciente); 
+
+    PacienteDto BuscarPorDocumento (String numeroDeDocumento);
 
     public List<PacienteDto> leerListaPacientes(); 
 

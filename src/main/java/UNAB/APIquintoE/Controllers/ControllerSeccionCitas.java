@@ -15,13 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import UNAB.APIquintoE.Data.repositorio.ICitasRepositorio;
+
 // import UNAB.APIquintoE.Models.peticiones.CitasConsultorioRequestModel;
 /* import UNAB.APIquintoE.Data.entidades.CitasEntity; */
 import UNAB.APIquintoE.Models.peticiones.CitasRequestModel;
 import UNAB.APIquintoE.Models.respuestas.CitasDataRestModel;
 import UNAB.APIquintoE.Services.ICitasService;
+import UNAB.APIquintoE.Services.IPacienteService;
 import UNAB.APIquintoE.Services.IUsuarioServices;
 import UNAB.APIquintoE.Shared.CitaDto;
+import UNAB.APIquintoE.Shared.PacienteDto;
 import UNAB.APIquintoE.Shared.UsuarioDto;
 
 @RestController
@@ -38,6 +41,8 @@ public class ControllerSeccionCitas {
     @Autowired
     ICitasService iCitasService;  
 
+    @Autowired
+    IPacienteService iPacienteService;
 
     @Autowired
     IUsuarioServices iUsuarioServices;
@@ -57,13 +62,17 @@ public class ControllerSeccionCitas {
       UsuarioDto usuarioDtoLogin = iUsuarioServices.leerUsuario(username);
   
       if (usuarioDtoLogin.getRolEntity().getId()==3 ) {  
-          
+
             CitaDto crearCitaDto= modelMapper.map(crearCitasRequestModel, CitaDto.class); 
-            
-            CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
-            CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
+            PacienteDto pacienteDto=iPacienteService.BuscarPorDocumento(crearCitasRequestModel.getNumeroDeDocumento());
+            if (pacienteDto!=null) {
+
+              CitaDto citaDto= iCitasService.programarCitas(crearCitaDto); 
+              CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
 
               return citasDataRestModel;
+            }throw new RuntimeException("El usuario no esta registrado.");
+
             }return null;
         
     }

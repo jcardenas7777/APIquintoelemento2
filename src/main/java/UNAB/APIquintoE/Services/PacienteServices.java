@@ -63,6 +63,16 @@ public class PacienteServices implements IPacienteService{
         }
         return pacienteDtoList;
     }
+
+    @Override
+    public PacienteDto BuscarPorDocumento(String numeroDeDocumento) {
+        
+        PacienteEntity pacienteEntity = iPacienteRepositorio.findByNumeroDeDocumento(numeroDeDocumento);
+
+        PacienteDto pacienteDto = modelMapper.map(pacienteEntity,PacienteDto.class);
+        
+        return pacienteDto;
+    }
     
 }
 
