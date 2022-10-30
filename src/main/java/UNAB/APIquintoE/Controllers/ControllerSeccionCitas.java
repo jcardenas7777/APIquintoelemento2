@@ -71,7 +71,9 @@ public class ControllerSeccionCitas {
               CitasDataRestModel citasDataRestModel=modelMapper.map(citaDto, CitasDataRestModel.class); 
 
               return citasDataRestModel;
-            }throw new RuntimeException("El usuario no esta registrado.");
+            }
+            
+            throw new RuntimeException("El usuario no esta registrado.");
 
             }return null;
         
