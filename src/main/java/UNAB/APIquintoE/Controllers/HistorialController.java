@@ -53,8 +53,8 @@ public class HistorialController {
     return historialDataRestModel;
 
   }
-   @GetMapping(path = "/mihistorial")
-   public List<HistorialDataRestModel>verHistorial(String documento){
+   @GetMapping(path = "/mihistorial/{documento}")
+   public List<HistorialDataRestModel>verHistorial(@PathVariable String documento){
 
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
     String username = authentication.getPrincipal().toString();
@@ -63,7 +63,7 @@ public class HistorialController {
 
     if (usuarioDtoLogin.getRolEntity().getId()==2 ) {
 
-       documento=HistorialBuscarRequestModel.getIdHistoria.toString();
+       System.out.println(documento);
 
         List<HistorialDto>historialDtoList= iHistorialServices.verHistorial(documento);
 
